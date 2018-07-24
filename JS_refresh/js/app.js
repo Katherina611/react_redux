@@ -79,4 +79,26 @@ console.log(num1);
 console.log(num2);
 const {name} = {name:"Kasia", age:25};
 console.log(name);
-console.log(age);//undefined
+//console.log(age);//undefined
+
+//primitives and reference types
+const number = 1;
+const numb2 = number;
+console.log(numb2);
+const personObj = {
+    name: "Max"
+}
+const secondPerson = {
+    ...personObj//copy name
+};
+personObj.name = "Kasia";
+console.log(secondPerson);
+//object and array are reference type
+
+//array function
+const numbers = [1,2,3];
+const doubleNumArray = numbers.map((num)=>{
+    return num*2;
+});
+console.log(numbers);
+console.log(doubleNumArray);
