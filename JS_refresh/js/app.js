@@ -27,6 +27,7 @@ console.log(baseData);
 */
 
 //class
+
 class Human {
     constructor (){
         this.gender = "male"
@@ -50,4 +51,32 @@ const person = new Person();
 person.printMyName();
 person.printGender();
 
+//spread and rest operators
+const oldArray = [1,2,3,4];
+const newArray = [...oldArray, 5,6];
+console.log(newArray);
 
+const oldObj = {
+    name:"Kasia"
+}
+const newObj = {
+    ...oldObj,
+    age:24
+}
+console.log(newObj);
+
+function sortArgument (...arguments){
+    console.log (arguments.sort((a,b)=>{
+        return a-b
+    }));
+}
+sortArgument(3,55,1,83,4);
+
+//destructuring
+const welcome = ["Hello", "Kasia"]
+const [num1,num2] = welcome;
+console.log(num1);
+console.log(num2);
+const {name} = {name:"Kasia", age:25};
+console.log(name);
+console.log(age);//undefined

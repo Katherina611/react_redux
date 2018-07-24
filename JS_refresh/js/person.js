@@ -1,3 +1,4 @@
+
 const person = {
     name: "Kasia"
 }
