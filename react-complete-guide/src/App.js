@@ -8,16 +8,20 @@ import UserInput from './User/UserInput';
 
 class App extends Component {
   state = {
+    
     persons: [
       {name: 'Max', age: '30'},
       {name: 'Kasia', age: '24'},
       {name: 'Tom', age: '26'},
     ],
+    
+    user: "Kasia",
+    /*
     users:[
       {name: "Kasia", animal:"cat"},
       {name: "Magda", animal:'dog'},
       {name: 'Tom', animal:'fish'},
-    ],
+    ],*/
     otherState: "some other value"
   }
   switchNameHandler = (newName) =>{
@@ -42,11 +46,12 @@ class App extends Component {
   }
   userHandler = (event) =>{
     this.setState({
-      users: [
+      /*users: [
         {name: "Kasia", animal:"cat"},
         {name: event.target.value, animal:'dog'},
         {name: "Tom", animal:'fish'},
-      ]
+      ]*/
+      user:event.target.value
     })
   }
   render() {
@@ -92,20 +97,17 @@ class App extends Component {
           name = {this.state.persons[2].name} 
           age = {this.state.persons[2].age}/>
         <UserInput 
-          name={this.state.users[1].name} 
+          name={this.state.user} 
           change={this.userHandler}
           style={inputStyle}/>
         <UserOutput 
-          name={this.state.users[0].name} 
-          animal={this.state.users[0].animal}
+          name={this.state.user} 
           style={userStyle}/>
         <UserOutput 
-          name={this.state.users[1].name} 
-          animal={this.state.users[1].animal}
+          name={this.state.user} 
           style={userStyle}/>
         <UserOutput 
-          name={this.state.users[2].name} 
-          animal={this.state.users[2].animal}
+          name="Tom" 
           style={userStyle}/>
       </div>
     );
