@@ -82,16 +82,11 @@ class App extends Component {
       boxShadow: '0 2px 2px #ccc',
       margin: '50px auto',
       width:'50%'
-      
     }
-    return (
-      <div className="App">
-        <h1>Hi, I am a React App</h1>
-        <p>This is really working</p>
-        <button 
-          style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {this.state.showPersons === true ? 
+
+    let persons = null;
+    if(this.state.showPersons){
+      persons = (
         <div>
           <Person 
             name = {this.state.persons[0].name} 
@@ -104,8 +99,18 @@ class App extends Component {
           <Person 
             name = {this.state.persons[2].name} 
             age = {this.state.persons[2].age}/>
-        </div> : null
-        }
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I am a React App</h1>
+        <p>This is really working</p>
+        <button 
+          style={style}
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
+        {persons}
         <div style={{display:'none'}}>
           <UserInput 
             name={this.state.user} 
