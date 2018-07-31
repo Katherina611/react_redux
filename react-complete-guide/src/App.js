@@ -10,9 +10,9 @@ class App extends Component {
   state = {
     
     persons: [
-      {name: 'Max', age: '30'},
-      {name: 'Kasia', age: '24'},
-      {name: 'Tom', age: '26'},
+      {id:'4cawf', name: 'Max', age: '30'},
+      {id:'3sasc', name: 'Kasia', age: '24'},
+      {id:'5cvdgc', name: 'Tom', age: '26'},
     ],
     
     user: "Kasia",
@@ -25,6 +25,7 @@ class App extends Component {
     otherState: "some other value",
     showPersons: false
   }
+  /*
   switchNameHandler = (newName) =>{
     //console.log("was clicked");
     //DON'T DO THIS: this.state.persons[0].name = "Katherina"
@@ -35,7 +36,14 @@ class App extends Component {
         {name: 'Tom', age: '28'},
       ]
     })
+  }*/
+  deletePersonHandler = (personIndex) =>{
+    //const persons = this.state.persons.slice();
+    const persons = [...this.state.persons];
+    persons.splice(personIndex,1);
+    this.setState({persons:persons})
   }
+
   nameChangedHandler = (event) =>{
     this.setState({
       persons: [
@@ -88,10 +96,12 @@ class App extends Component {
     if(this.state.showPersons){
       persons = (
         <div>
-          {this.state.persons.map(person =>{
-            return <Person 
+          {this.state.persons.map((person, index) =>{
+            return <Person
+            click = {() => this.deletePersonHandler(index)}
             name = {person.name} 
-            age = {person.age}/>
+            age = {person.age}
+            key = {person.id} />
           })}
         </div>
       );
