@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import UserOutput from './User/UserOutput';
 import UserInput from './User/UserInput';
 
@@ -132,6 +132,7 @@ class App extends Component {
     }
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1>Hi, I am a React App</h1>
         <p className = {classes.join(' ')}>This is really working</p>
@@ -155,6 +156,7 @@ class App extends Component {
             style={userStyle}/>
         </div>
       </div>
+      </StyleRoot>
     );
     //return React.createElement('div', {className: "App"}, React.createElement('h1', null, 'Hi, I am a React App'))
   }
