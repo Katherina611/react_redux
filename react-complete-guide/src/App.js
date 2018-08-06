@@ -3,6 +3,7 @@ import classes from './App.css';
 import Person from './Person/Person';
 import UserOutput from './User/UserOutput';
 import UserInput from './User/UserInput';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 
 
@@ -93,17 +94,18 @@ class App extends Component {
 
     let persons = null;
     let btnClass = '';
-    if(this.state.showPersons){
+    if ( this.state.showPersons ) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) =>{
-            return <Person
-            click = {() => this.deletePersonHandler(index)}
-            name = {person.name} 
-            age = {person.age}
-            key = {person.id}
-            changed = {(event) => this.nameChangedHandler(event, person.id)}/>
-          })}
+          {this.state.persons.map( ( person, index ) => {
+            return <ErrorBoundary key={person.id}>
+              <Person
+                click={() => this.deletePersonHandler( index )}
+                name={person.name}
+                age={person.age}
+                changed={( event ) => this.nameChangedHandler( event, person.id )} />
+            </ ErrorBoundary>
+          } )}
         </div>
       );
       btnClass = classes.Red;
