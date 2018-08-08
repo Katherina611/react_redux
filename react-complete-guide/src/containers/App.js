@@ -10,7 +10,6 @@ import UserInput from '../components/User/UserInput';
 
 class App extends Component {
   state = {
-    
     persons: [
       {id:'4cawf', name: 'Max', age: '30'},
       {id:'3sasc', name: 'Kasia', age: '24'},
