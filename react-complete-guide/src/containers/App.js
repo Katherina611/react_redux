@@ -9,7 +9,34 @@ import UserInput from '../components/User/UserInput';
 
 
 class App extends Component {
-  state = {
+  constructor(props){
+    super(props);
+    console.log('[App.js] Inside Constuctor', props);
+    this.state = {
+      persons: [
+        {id:'4cawf', name: 'Max', age: '30'},
+        {id:'3sasc', name: 'Kasia', age: '24'},
+        {id:'5cvdgc', name: 'Tom', age: '26'},
+      ],
+      
+      user: "Kasia",
+      /*
+      users:[
+        {name: "Kasia", animal:"cat"},
+        {name: "Magda", animal:'dog'},
+        {name: 'Tom', animal:'fish'},
+      ],*/
+      otherState: "some other value",
+      showPersons: false
+    }
+  }
+  componentWillMount(){
+    console.log('[App.js] Inside componentWillMount()')
+  }
+  componentDidMount(){
+    console.log('[App.js] Inside componentDidMount()')
+  }
+  /*state = {
     persons: [
       {id:'4cawf', name: 'Max', age: '30'},
       {id:'3sasc', name: 'Kasia', age: '24'},
@@ -17,15 +44,15 @@ class App extends Component {
     ],
     
     user: "Kasia",
-    /*
+    
     users:[
       {name: "Kasia", animal:"cat"},
       {name: "Magda", animal:'dog'},
       {name: 'Tom', animal:'fish'},
-    ],*/
+    ],
     otherState: "some other value",
-    showPersons: false
-  }
+    showPersons: false;
+}*/
   /*
   switchNameHandler = (newName) =>{
     //console.log("was clicked");
@@ -75,7 +102,7 @@ class App extends Component {
       this.setState({showPersons: !doesShow});
   }
   render() {
-    
+    console.log('[app.js] Inside render()')
     const inputStyle = {
       color:'blue',
       fontSize:'20px',
