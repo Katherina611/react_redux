@@ -4,8 +4,8 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import UserOutput from '../components/User/UserOutput';
 import UserInput from '../components/User/UserInput';
-import WithClass from '../hoc/WithClass';
-
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
 
 class App extends PureComponent {
@@ -144,7 +144,7 @@ class App extends PureComponent {
   
 
     return (
-      <WithClass classes={classes.App}>
+      <Aux>
         <button onClick={() => {this.setState({showPersons:true})}}>Show Persons</button>
         <Cockpit
           appTitle = {this.props.title}
@@ -167,10 +167,10 @@ class App extends PureComponent {
             name="Tom" 
             style={userStyle}/>
         </div>
-      </WithClass>
+      </Aux>
     );
     //return React.createElement('div', {className: "App"}, React.createElement('h1', null, 'Hi, I am a React App'))
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
