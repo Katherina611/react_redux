@@ -14,9 +14,9 @@ class App extends PureComponent {
     console.log('[App.js] Inside Constuctor', props);
     this.state = {
       persons: [
-        {id:'4cawf', name: 'Max', age: '30'},
-        {id:'3sasc', name: 'Kasia', age: '24'},
-        {id:'5cvdgc', name: 'Tom', age: '26'},
+        {id:'4cawf', name: 'Max', age: 30},
+        {id:'3sasc', name: 'Kasia', age: 24},
+        {id:'5cvdgc', name: 'Tom', age: 26},
       ],
       
       user: "Kasia",
@@ -27,7 +27,8 @@ class App extends PureComponent {
         {name: 'Tom', animal:'fish'},
       ],*/
       otherState: "some other value",
-      showPersons: false
+      showPersons: false,
+      toggleClicked:0
     }
   }
   componentWillMount(){
@@ -111,7 +112,12 @@ class App extends PureComponent {
 
   togglePersonsHandler = () =>{
       const doesShow = this.state.showPersons;
-      this.setState({showPersons: !doesShow});
+      this.setState( (prevState, props) =>{
+        return{
+          showPersons: !doesShow, 
+          toggleClicked: prevState.toggleClicked +1 
+        }
+      });
   }
   render() {
     console.log('[app.js] Inside render()')
