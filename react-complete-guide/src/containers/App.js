@@ -7,6 +7,7 @@ import UserInput from '../components/User/UserInput';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
 
+export const AuthContext = React.createContext(false);
 
 class App extends PureComponent {
   constructor(props){
@@ -28,7 +29,8 @@ class App extends PureComponent {
       ],*/
       otherState: "some other value",
       showPersons: false,
-      toggleClicked:0
+      toggleClicked:0,
+      authenticated: false
     }
   }
   componentWillMount(){
@@ -119,6 +121,9 @@ class App extends PureComponent {
         }
       });
   }
+  loginHandler = () =>{
+    this.setState({authenticated: true});
+  }
   render() {
     console.log('[app.js] Inside render()')
     const inputStyle = {
@@ -156,8 +161,11 @@ class App extends PureComponent {
           appTitle = {this.props.title}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
-          clicked={this.togglePersonsHandler}/>
-        {persons}
+          clicked={this.togglePersonsHandler}
+          login = {this.loginHandler}/>
+          <AuthContext.Provider value={this.state.authenticated}>
+            {persons}
+          </AuthContext.Provider>
         <div style={{display:'none'}}>
           <UserInput 
             name={this.state.user} 
