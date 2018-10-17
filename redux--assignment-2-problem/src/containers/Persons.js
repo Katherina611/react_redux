@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+
 import Person from '../components/Person/Person';
 import AddPerson from '../components/AddPerson/AddPerson';
 import * as actionTypes from '../store/actions';
 
 class Persons extends Component {
+    
     render () {
         return (
             <div>
-                <AddPerson personAdded={this.onAddedPerson} />
+                <AddPerson personAdded={this.props.onAddedPerson} />
                 {this.props.prs.map(person => (
                     <Person 
                         key={person.id}
@@ -21,16 +23,17 @@ class Persons extends Component {
     }
 }
 
-const mapStateToProp = state => {
+const mapStateToProps = state => {
     return {
         prs: state.persons
-    }
+    };
 };
+
 const mapDispatchToProps = dispatch => {
     return {
-        onAddedPerson: () => dispatch({type:actionTypes.ADD_PERSON}),
+        onAddedPerson: () => dispatch({type: actionTypes.ADD_PERSON}),
         onRemovedPerson: (id) => dispatch({type: actionTypes.DELETE_PERSON, personId: id})
     }
-}
+};
 
-export default connect(mapStateToProp,mapDispatchToProps)(Person);
+export default connect(mapStateToProps, mapDispatchToProps)(Persons);
