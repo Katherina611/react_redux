@@ -27,7 +27,7 @@ console.log(store.getState());
 
 //subscription
 store.subscribe(() => {
-    console.log('[Subscription]', stre.getState());
+    console.log('[Subscription]', store.getState());
 });
 
 //dispatching action
